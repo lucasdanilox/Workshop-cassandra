@@ -37,10 +37,16 @@ public class DeparmentController {
         return ResponseEntity.created(uri).body(dto);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping(value = "/{id}")
     public ResponseEntity<DepartmentDTO> update(@PathVariable UUID id, @RequestBody DepartmentDTO dto) {
         dto = service.update(id, dto);
         return ResponseEntity.ok().body(dto);
+    }
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Void> delete(@PathVariable UUID id) {
+        service.deleteById(id);
+        return ResponseEntity.noContent().build();
     }
 
 }
