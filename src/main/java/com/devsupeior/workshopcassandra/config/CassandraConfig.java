@@ -43,7 +43,7 @@ public class CassandraConfig extends AbstractCassandraConfiguration {
     @Override
     protected List<CreateKeyspaceSpecification> getKeyspaceCreations() {
         return Collections.singletonList(CreateKeyspaceSpecification.createKeyspace(keyspace).ifNotExists()
-                .with(KeyspaceOption.DURABLE_WRITES, true).withSimpleReplication(3L));
+                .with(KeyspaceOption.DURABLE_WRITES, true).withSimpleReplication(1L));
     }
 
     @Override
@@ -58,6 +58,6 @@ public class CassandraConfig extends AbstractCassandraConfiguration {
 
     @Override
     public String[] getEntityBasePackages() {
-        return new String[] { "com.devsuperior.meuprojeto.model.entities" };
+        return new String[] { "com.devsupeior.workshopcassandra.model.entities" };
     }
 }
