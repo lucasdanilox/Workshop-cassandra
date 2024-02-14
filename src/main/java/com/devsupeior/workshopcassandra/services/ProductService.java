@@ -34,6 +34,16 @@ public class ProductService {
         return list.stream().map(ProductDTO::new).collect(Collectors.toList());
     }
 
+    public List<ProductDTO> findByDescription(String text) {
+        List<Product> list;
+        if ("".equals(text)) {
+            list = repository.findAll();
+        } else {
+            list = repository.findByDescription("%" + text + "%");
+        }
+        return list.stream().map(ProductDTO::new).collect(Collectors.toList());
+    }
+
 
     private Product getById(UUID id) {
         Optional<Product> result = repository.findById(id);
